@@ -1,0 +1,79 @@
+:root {
+	--basic-color: #dedede;
+	--primary-color: #5703e0;
+	--secondary-color: #111111;
+	--light-secondary-color: #fefefe;
+}
+
+button {
+	padding: 0.4em 0.8em;
+	font-family: inherit;
+	font-size: 0.7em;
+	font-weight: 600;
+	background-color: transparent;
+	color: var(--secondary-color);
+	border-radius: var(--border-radius);
+	border: var(--border);
+	cursor: pointer;
+	&:hover {
+		background-color: var(--primary-color);
+		color: var(--light-secondary-color);
+		border-color: var(--primary-color);
+	}
+}
+
+.todo-items-list {
+	--gap: 2rem;
+	--column: 3;
+
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap);
+
+	.todo-item {
+		--container-free-space: calc(100% - var(--gap) * (var(--column) - 1));
+		--todo-item-size: calc(var(--container-free-space) / var(--column));
+
+		width: var(--todo-item-size);
+		height: min-content;
+		padding: 0.35em;
+		border: var(--border);
+		border-radius: var(--border-radius);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 1em;
+
+		.todo-item__title {
+			font-family: inherit;
+			font-weight: 700;
+			font-size: 1.5em;
+			background-color: transparent;
+			outline: none;
+			border: none;
+		}
+
+		.todo-tasks {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 0.25em;
+
+			.todo-task__item {
+				font-family: inherit;
+				font-weight: 400;
+				font-size: 0.8em;
+				background-color: transparent;
+				outline: none;
+				border: none;
+			}
+		}
+
+		.todo-item-buttons {
+			display: flex;
+			justify-content: space-between;
+			gap: 0.5em;
+		}
+	}
+}

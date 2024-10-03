@@ -1,0 +1,37 @@
+@font-face {
+	font-family: JetBrainsMono;
+	src: url(/public/ttf/JetBrainsMono.ttf);
+}
+
+:root {
+	--basic-viewpoint-unit: calc(1vh + 1vw);
+	--border: calc(var(--basic-viewpoint-unit) / 10) solid var(--secondary-color);
+	--border-radius: calc(var(--basic-viewpoint-unit) / 5);
+	--transition: 0.1s;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	transition: var(--transition);
+}
+
+body {
+	--responsive-font-size: calc(var(--basic-viewpoint-unit) * 1);
+
+	font-family: JetBrainsMono;
+	font-size: var(--responsive-font-size);
+	font-weight: 500;
+	background-color: var(--basic-color);
+	color: var(--secondary-color);
+}
+
+.app-container {
+	height: 100vh;
+	padding: 1.5em;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 2em;
+}
