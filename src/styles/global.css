@@ -35,3 +35,13 @@ body {
 	align-items: start;
 	gap: 2em;
 }
+
+.todo-list {
+	--gap: 2rem;
+	--column: 3;
+
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap);
+}
