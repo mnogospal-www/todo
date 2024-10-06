@@ -1,23 +1,19 @@
 import { Task } from '../components/Task.mjs';
 
 export const todoActions = {
-	deleteTodo: (element) => {
-		const todoItem = element.closest('.todo');
-		todoItem.remove();
+	deleteTodo: (todoElement) => {
+		todoElement.remove();
 	},
 
-	deleteTask: (element) => {
-		const todoTasks =
-			element.closest('.buttons').previousElementSibling.children;
-		const lastTask = todoTasks[todoTasks.length - 1];
-
-		if (todoTasks.length > 1) {
-			lastTask.remove();
+	deleteTask: (todoElement) => {
+		const taskList = todoElement.children[1];
+		if (taskList.children.length > 1) {
+			taskList.lastElementChild.remove();
 		}
 	},
 
-	addTask: (element) => {
-		const todoTasks = element.closest('.buttons').previousElementSibling;
-		todoTasks.insertAdjacentHTML('beforeend', Task());
+	addTask: (todoElement) => {
+		const taskList = todoElement.children[1];
+		taskList.insertAdjacentHTML('beforeend', Task());
 	},
 };

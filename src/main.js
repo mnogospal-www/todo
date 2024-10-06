@@ -3,25 +3,24 @@ import { todoActions } from './actions/todoActions.mjs';
 
 const createTodoButton = document.querySelector('.create-todo-button');
 createTodoButton.onclick = () => {
-	addTodoLayout();
+	addTodoLayout(Todo());
 };
 
-function addTodoLayout() {
-	const todoElement = Todo();
+function addTodoLayout(todoElement) {
 	document
 		.querySelector('.todo-list')
 		.insertAdjacentElement('afterbegin', todoElement);
-	taskOperationHandler(todoElement);
+	taskActionHandler(todoElement);
 }
 
-function taskOperationHandler(todoElement) {
+function taskActionHandler(todoElement) {
 	const taskActionButtons = Array.from(
 		todoElement.querySelectorAll('[data-action]')
 	);
 
-	taskActionButtons.map((button) => {
+	taskActionButtons.forEach((button) => {
 		button.onclick = (event) => {
-			todoActions[event.target.dataset.action](event.target);
+			todoActions[event.target.dataset.action](todoElement);
 		};
 	});
 }

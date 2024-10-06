@@ -17,7 +17,7 @@ export function Todo() {
         <button data-action="addTask">+</button>
         <button data-action="deleteTask">-</button>
       </div>
-      <button data-action="deleteTodo">delete</button>
+      <button data-action="deleteTodo">Delete</button>
     </div>
   `;
 

@@ -1,12 +1,12 @@
 @font-face {
-	font-family: JetBrainsMono;
-	src: url(/public/ttf/JetBrainsMono.ttf);
+	font-family: Raleway;
+	src: url(/public/ttf/Raleway.ttf);
 }
 
 :root {
 	--basic-viewpoint-unit: calc(1vh + 1vw);
 	--border: calc(var(--basic-viewpoint-unit) / 10) solid var(--secondary-color);
-	--border-radius: calc(var(--basic-viewpoint-unit) / 5);
+	--border-radius: calc(var(--basic-viewpoint-unit) / 8);
 	--transition: 0.1s;
 }
 
@@ -20,7 +20,7 @@
 body {
 	--responsive-font-size: calc(var(--basic-viewpoint-unit) * 1);
 
-	font-family: JetBrainsMono;
+	font-family: Raleway;
 	font-size: var(--responsive-font-size);
 	font-weight: 500;
 	background-color: var(--basic-color);
@@ -36,12 +36,18 @@ body {
 	gap: 2em;
 }
 
-.todo-list {
-	--gap: 2rem;
-	--column: 3;
-
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--gap);
+button {
+	padding: 0.4em 0.8em;
+	font-family: inherit;
+	font-size: 0.7em;
+	font-weight: 600;
+	background-color: transparent;
+	color: var(--secondary-color);
+	border-radius: var(--border-radius);
+	border: var(--border);
+	cursor: pointer;
+	&:hover {
+		background-color: var(--primary-color);
+		border-color: var(--primary-color);
+	}
 }

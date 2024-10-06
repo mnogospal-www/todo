@@ -1,9 +1,6 @@
 export function Task() {
 	return `
-    <div>
-      <input
-        type="checkbox"
-      />
+    <div class="task-wrapper">
       <input
         type="text"
         class="task"
