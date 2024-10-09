@@ -1,19 +1,29 @@
-import { Task } from '../components/Task.mjs';
+import { Todo } from '../components/Todo.mjs';
+import { useFetch } from '../hooks/useFetch.mjs';
 
 export const todoActions = {
-	deleteTodo: (todoElement) => {
+	createTodo: (todoState) => {
+		const newTodo = Todo();
+
+		todoState.set(newTodo, { title: '', tasks: [] });
+		document.querySelector('.todo-list').prepend(newTodo);
+	},
+
+	deleteTodo: (todoState, element) => {
+		const todoElement = element.closest('.todo');
+		const elementId = todoState.get(todoElement).id;
+
+		useFetch('DELETE', null, elementId);
+		todoState.delete(todoElement);
 		todoElement.remove();
 	},
 
-	deleteTask: (todoElement) => {
-		const taskList = todoElement.children[1];
-		if (taskList.children.length > 1) {
-			taskList.lastElementChild.remove();
-		}
-	},
+	saveTodo: (todoState, element) => {
+		const elementState = todoState.get(element.closest('.todo'));
+		elementState.tasks = Array.from(elementState.tasks);
 
-	addTask: (todoElement) => {
-		const taskList = todoElement.children[1];
-		taskList.insertAdjacentHTML('beforeend', Task());
+		if (elementState.title.length && elementState.tasks.length) {
+			useFetch('POST', elementState);
+		}
 	},
 };

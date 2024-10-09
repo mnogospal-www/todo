@@ -1,11 +1,12 @@
-export function Task() {
+export function Task(...props) {
 	return `
     <div class="task-wrapper">
       <input
-        type="text"
-        class="task"
-        placeholder="What you want to do?"
-      />
+				name="task" 
+        class="task" 
+        placeholder="What you want to do?" 
+        ${props}
+			/>
     </div>
   `;
 }

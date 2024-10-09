@@ -1,7 +1,7 @@
 :root {
-	--basic-color: #111111;
-	--primary-color: #965efd;
-	--secondary-color: #f1f1f1;
+	--basic-color: #000000;
+	--primary-color: #965dff;
+	--secondary-color: #ffffff;
 }
 
 .todo-list {
@@ -27,7 +27,7 @@
 		justify-content: space-between;
 		gap: 2em;
 
-		.title {
+		.todo-title {
 			font-family: inherit;
 			font-weight: 700;
 			font-size: 1.5em;
