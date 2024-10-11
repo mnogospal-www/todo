@@ -18,7 +18,7 @@ export const taskActions = {
 		if (taskList.children.length > 1) {
 			todoState
 				.get(todoElement)
-				.tasks.delete(taskList.lastElementChild.children[0]);
+				.tasks.delete(taskList.lastElementChild.lastElementChild);
 			taskList.lastElementChild.remove();
 		}
 	},
