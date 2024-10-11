@@ -29,9 +29,11 @@ function taskHandler() {
 
 	inputs.map((input) => {
 		input.onchange = () => {
-			input.name === 'title'
-				? (todoState.get(input.closest('.todo')).title = input.value)
-				: todoState.get(input.closest('.todo')).tasks.push(input.value);
+			const tasksState = todoState.get(input.closest('.todo')).tasks;
+
+			input.name !== 'title'
+				? tasksState.set(input, input.value)
+				: (todoState.get(input.closest('.todo')).title = input.value);
 		};
 	});
 }
@@ -41,15 +43,23 @@ async function initiateTodoState() {
 
 	data.forEach((todoProps) => {
 		const element = Todo(todoProps);
+		element.querySelector('.status').textContent = 'saved';
 		const value = {
 			title: todoProps.title,
-			tasks: todoProps.tasks,
+			tasks: new Map(),
 			id: todoProps.id,
 		};
 
 		todoState.set(element, value);
 		document.querySelector('.todo-list').prepend(element);
+
+		const tasks = Array.from(element.querySelectorAll('.task'));
+		tasks.map((task) => {
+			todoState.get(element).tasks.set(task, task.value);
+		});
 	});
+
+	taskHandler();
 }
 
 actionHandler();

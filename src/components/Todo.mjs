@@ -5,12 +5,16 @@ export function Todo(props) {
 	const todoElement = document.createElement('div');
 	todoElement.classList.add('todo');
 	todoElement.innerHTML = `
-    <input 
-			name="title"
-			class="todo-title" 
-			placeholder="Title" 
-			${props && `value="${props.title}"`}
-		/>
+		<div class="title-wrapper">
+			<input 
+				name="title"
+				class="todo-title" 
+				placeholder="Title" 
+				autocomplete="off"
+				${props ? `value="${props.title}"` : ''}
+			/>
+			<div class="status">unsaved</div>
+		</div>
 
 		<div class="task-list">
       ${

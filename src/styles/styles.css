@@ -2,6 +2,7 @@
 	--basic-color: #000000;
 	--primary-color: #965dff;
 	--secondary-color: #ffffff;
+	--error-color: #d15151;
 }
 
 .todo-list {
@@ -26,17 +27,39 @@
 		flex-direction: column;
 		justify-content: space-between;
 		gap: 2em;
+		&.invalid {
+			border-color: var(--error-color) !important;
+			* {
+				border-color: var(--error-color) !important;
+				color: var(--error-color);
+				&::placeholder {
+					color: var(--error-color);
+				}
+			}
+		}
 
-		.todo-title {
-			font-family: inherit;
-			font-weight: 700;
-			font-size: 1.5em;
-			background-color: transparent;
-			color: var(--secondary-color);
-			overflow: hidden;
-			text-overflow: ellipsis;
-			outline: none;
-			border: none;
+		.title-wrapper {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 0.15em;
+
+			.todo-title {
+				font-family: inherit;
+				font-weight: 700;
+				font-size: 1.5em;
+				background-color: transparent;
+				color: var(--secondary-color);
+				overflow: hidden;
+				text-overflow: ellipsis;
+				outline: none;
+				border: none;
+			}
+
+			.status {
+				font-size: 0.5em;
+				opacity: 50%;
+			}
 		}
 
 		.task-list {
@@ -62,9 +85,6 @@
 					color: var(--secondary-color);
 					overflow: hidden;
 					text-overflow: ellipsis;
-					&.complite {
-						text-decoration: line-through;
-					}
 				}
 			}
 		}

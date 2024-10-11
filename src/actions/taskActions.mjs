@@ -1,19 +1,24 @@
 import { Task } from '../components/Task.mjs';
 
 export const taskActions = {
-	addTask: (todoState, element) => {
+	addTask: (todoState, button) => {
 		const newTask = Task();
-		const todoElement = element.closest('.todo');
+		const todoElement = button.closest('.todo');
 		const taskList = todoElement.querySelector('.task-list');
+
+		console.log(todoState);
 
 		taskList.insertAdjacentHTML('beforeend', newTask);
 	},
 
-	deleteTask: (todoState, element) => {
-		const todoElement = element.closest('.todo');
+	deleteTask: (todoState, button) => {
+		const todoElement = button.closest('.todo');
 		const taskList = todoElement.querySelector('.task-list');
 
 		if (taskList.children.length > 1) {
+			todoState
+				.get(todoElement)
+				.tasks.delete(taskList.lastElementChild.children[0]);
 			taskList.lastElementChild.remove();
 		}
 	},

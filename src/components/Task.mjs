@@ -4,7 +4,8 @@ export function Task(...props) {
       <input
 				name="task" 
         class="task" 
-        placeholder="What you want to do?" 
+        placeholder="What you want to do?"
+        autocomplete="off" 
         ${props}
 			/>
     </div>

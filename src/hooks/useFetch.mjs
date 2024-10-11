@@ -1,8 +1,8 @@
-export async function useFetch(method = 'GET', body, endpoint) {
+export async function useFetch(method, body, id) {
 	let url = 'http://localhost:3000/Todos';
 
 	if (method === 'DELETE' || method === 'PUT') {
-		url += `/${endpoint}`;
+		url += `/${id}`;
 	}
 
 	const response = await fetch(url, {
